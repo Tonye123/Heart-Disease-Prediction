@@ -15,9 +15,6 @@ app = Flask(__name__)
 
 with open('classifier_mod2.pkl', 'rb') as pickle_file:
     model = pickle.load(pickle_file)
-    
-
-
 
 
 @app.route('/', methods=['GET'])
@@ -55,7 +52,7 @@ def Predict():
             ChestPain_nona = 0
             ChestPain_atyp = 1
             ChestPain_typ = 0
-            
+
         Thal = request.form['thal']
         if(Thal == 'norm'):
             Thal_normal = 1
@@ -69,12 +66,12 @@ def Predict():
             Thal_normal = 0
             Thal_fixed = 0
             Thal_reversable = 1
-                      
+
         Fbs = request.form['fbs']
         if(Fbs == 'yes'):
             Fbs = 1
         else:
-            Fbs = 0 
+            Fbs = 0
         Age = int(request.form['age'])
         Oldpeak = float(request.form['peak'])
         MaxHR = int(request.form['hr'])
@@ -94,18 +91,15 @@ def Predict():
         else:
             Slope = 3
 
-        prediction = model.predict([[Age,sex,RestBP,Chol,Fbs,RestECG,MaxHR,Ex_Ang,Oldpeak,Slope,Ca,
-                                   ChestPain_asymptomatic,ChestPain_nona,ChestPain_atyp,ChestPain_typ,Thal_fixed,Thal_normal,Thal_reversable]])
+        prediction = model.predict([[Age, sex, RestBP, Chol, Fbs, RestECG, MaxHR, Ex_Ang, Oldpeak, Slope, Ca,
+                                   ChestPain_asymptomatic, ChestPain_nona, ChestPain_atyp, ChestPain_typ, Thal_fixed, Thal_normal, Thal_reversable]])
         if prediction[0] == 1:
-            return render_template('result.html',prediction_text="Yes - You are prone to Heart Disease")
+            return render_template('result.html', prediction_text="Yes - You are prone to Heart Disease")
         else:
-            return render_template('result.html',prediction_text="No - You are not prone to Heart Disease")
-        
+            return render_template('result.html', prediction_text="No - You are not prone to Heart Disease")
 
     else:
         render_template('index.html')
-        
-    
 
 
 if __name__ == "__main__":
