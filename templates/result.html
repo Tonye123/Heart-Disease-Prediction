@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Heart Disease Prediction</title>
+</head>
+
+<body class="bg-red-400 font-light text-lg text-red-50">
+
+    <div class="flex flex-col items-center justify-center mt-24">
+
+    <h1 class="text-4xl">{{ prediction_text }}</h1>
+    <a class="underline" href="{{url_for('Home') }}" >Back to form</a>
+    
+    </div>
+
+</body>

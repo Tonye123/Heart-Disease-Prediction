@@ -1,0 +1,126 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Heart Disease Prediction</title>
+</head>
+
+<body class="bg-red-400 font-light text-lg">
+    
+    <h1 class=" h-10 text-3xl text-center font-light text-red-50" >Heart Disease Prediction</h1>
+    
+
+    <div class="bg-white p-6 flex flex-col items-center mt-8 sm:mx-auto sm:w-full sm:max-w-md shadow rounded-lg" >
+       
+            
+            <form class="mb-0 space-y-4" action="{{ url_for('Predict')}}" method="post">
+                <div class="mt-3">
+                    <p>Sex</p>
+                	<input type="radio" id="male" name="sex" value="male" required aria-required="true">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="sex" value="female">
+                    <label for="female">Female</label><br>
+                </div>
+                <div class="mt-3">
+                    <p>fasting blood sugar > 120 mg/dl?</p>
+                	<input type="radio" id="yes" name="fbs" value="yes" required aria-required="true">
+                    <label for="yes">Yes</label><br>
+                    <input type="radio" id="no" name="fbs" value="no">
+                    <label for="no">No</label><br>
+                </div>
+                 <div>
+                    <label class="block mt-1" for="ecg">Resting electrocardiographic results</label>
+                    <select  class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm" name="ecg" id="ecg" required="required">
+                        <option value="0">Normal</option>
+                        <option value="1">ST-T wave abnormality</option>
+                        <option value="2"> showing probable or definite left ventricular hypertrophy</option>
+                        
+                   </select>
+                </div>
+                <div>
+                    <label class="block mt-1" for="colored vessels">Number of major vessels colored</label>
+                    <select  class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm" name="colored vessels" id="vessel" required="required">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                   </select>
+                </div>
+                <div>
+                    <label class="block mt-1" for="chest">Chest Pain</label>
+                    <select  class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm" name="chest" id="chest" required="required">
+                        <option value="asym">Asymptomatic</option>
+                        <option value="nona">Non Aginal Pain</option>
+                        <option value="typ">Typical Angina</option>
+                        <option value="atyp">Atypical Angina</option>
+                   </select>
+                </div>
+                
+                <div>
+                    <label class="block mt-1" for="thal">Thalium Stress Test Result</label>
+                    <select  class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm" name="thal" id="thal required="required">
+                        <option value="norm">Normal</option>
+                        <option value="fixed">Fixed Defect</option>
+                        <option value="rev">Reversible Defect</option>
+                    
+                   </select>
+                </div>
+                
+                 
+                
+                <div>
+                	<label class="block" for="age">Age: </label>
+                	<input class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm mt-1" type="number" name="age" id="age" min="0" required aria-required="true">
+                </div>
+                <div>
+                	<label  class="block" for="peak">OldPeak: </label>
+                	<input class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm mt-1" type="float" name="peak" id="peak" min="0" required aria-required="true">
+                </div>
+                <div>
+                	<label  class="block" for="hr">Maximum Heart Rate: </label>
+                	<input class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm mt-1" type="number" name="hr" id="hr" min="0" required aria-required="true">
+                </div>
+                <div>
+                	<label  class="block" for="chol">Serum Cholestrol: </label>
+                	<input class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm mt-1" type="number" name="chol" id="chol" min="0" required aria-required="true">
+                </div>
+                <div>
+                    <p>Exercise induced Angina?</p>
+                	<input type="radio" id="yes" name="ExAng" value="yes" required aria-required="true">
+                    <label for="yes">Yes</label><br>
+                    <input type="radio" id="no" name="ExAng" value="no">
+                    <label for="no">No</label><br>
+                </div>
+                
+                <div>
+                	<label  class="block" for="bp">Resting Blood Pressure: </label>
+                	<input class="w-full bg-red-50 border border-gray-300 px-2 py-1 rounded-lg shadow-sm mt-1" type="number" name="bp" id="bp" min="0" required aria-required="true">
+                </div>
+                
+                <div>
+                    <label class="block" for="slope">Select Slope of Peak exercise</label>
+                    <select  class="w-full border border-gray-300 px-2 py-1 rounded-lg shadow-sm mt-1" name="slope" id="slope" required aria-required="true">
+                        <option value="up">Upsloping</option>
+                        <option value="flat">Flat</option>
+                        <option value="down">Downsloping</option>
+                   </select>
+               </div>
+                   
+                   <button class="bg-red-400 p-2 rounded-lg text-white" id="sub" type="submit ">Predict</button>
+            
+           </form>
+
+
+ 
+ </div>
+
+    
+</body>
+
+</html>
+
